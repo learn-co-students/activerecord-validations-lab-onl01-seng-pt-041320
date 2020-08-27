@@ -6,9 +6,9 @@ class Post < ActiveRecord::Base
     validate :clickbait
 
     def clickbait
-        bait = ["Won't Believe", "Secret", "Guess"]
+        bait = ["Won't Believe", "Secret", "Guess", "Number"]
         if title
-            unless title.include?(bait[0]) || title.include?(bait[1]) || title.include?(bait[2])
+            unless title.include?(bait[0]) || title.include?(bait[1]) || title.include?(bait[2]) || title.include?(bait[3])
                 errors.add(:title, "must be clickbait.")
             end
         end
