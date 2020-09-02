@@ -1,8 +1,10 @@
 class TitleValidator < ActiveModel::Validator
     
     def validate(record)
-        unless record.title.match?(/Won't Believe Secret Top[number] Guess/)
-            record.errors[:title] << "Title must Won't Believe, Secret, Top[number], or Guess"
+        string = [/Won't Believe/i, /Secret/i, /Top[0-9]/i, /Guess/i]
+        
+        if string.none?{|word| word.match(record.title)}
+            record.errors[:title] << "Not a clickbait title"
         end
     end
     
