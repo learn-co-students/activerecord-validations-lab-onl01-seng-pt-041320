@@ -6,7 +6,7 @@ class Post < ActiveRecord::Base
     message: "%{value} is not a valid category" }
 
     def clickbait
-        if !title.present? || !title.include?("Won't Believe"|| "Secret" || "Top [number]" || "Guess")
+        if !title.blank?("Won't Believe"|| "Secret" || "Top [number]" || "Guess")
             errors.add(:title, "must be clickbait")
         end 
     end 
